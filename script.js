@@ -11,6 +11,7 @@ function getParkData(stateSearchVal) {
   let apiKey = 'PgnZNBF1eFlwu12cj9iDVet20makkg9JMroA4RlY';
     let endpoint = 'https://api.nps.gov/api/v1/parks';
     let query = `${endpoint}?stateCode=${stateSearchVal}&api_key${apiKey}`;
+    let responseObj = 'null';
     console.log(query);
     // const options = {
     //     mode: "cors",
@@ -25,10 +26,34 @@ function getParkData(stateSearchVal) {
       
       fetch(query)
       .then((response)=> response.json())
-      .then((responseJson) => console.log(responseJson));
-      
-    }
-// }
+      .then((responseJson) => {
+        renderResults(responseJson); 
+    });
+}
+
+function renderResults(responseJson){
+  console.log(responseJson);
+
+  function createListItem(park){
+    let name = park.name;
+    let description = park.description;
+    let url = park.url;
+    return `<li>
+    <h2>${name}</h2>
+    <p>${description}</p>
+    <a href=${url}>Visit the website!</a>
+    </li>`;
+  }
+    let htmlData = responseJson.data.map(function(park){
+      return createListItem(park);
+    });
+
+    console.log(htmlData);
+    $(".resultslist").html(htmlData.join(''));
+    $('.searchresults').removeClass('hidden');
+}
+
+
 
 // "https://api.nps.gov/api/v1/parks?stateCode=ca"
 
