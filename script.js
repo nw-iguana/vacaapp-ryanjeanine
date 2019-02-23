@@ -1,29 +1,22 @@
 function submitHandler(event){
   event.preventDefault();
   let stateSearchVal = $('.form__state-input').val();
-  getParkData(stateSearchVal);
+  let limitVal = $('.form__limit-input').val();
+  getParkData(stateSearchVal,limitVal);
 }
 
 $('.search-form').on('submit', submitHandler);
 
 
-function getParkData(stateSearchVal) {
+function getParkData(stateSearchVals,limitVal) {
+  //stateSearchArr = stateSearchVals.split(',');
+
+
   let apiKey = 'PgnZNBF1eFlwu12cj9iDVet20makkg9JMroA4RlY';
     let endpoint = 'https://api.nps.gov/api/v1/parks';
-    let query = `${endpoint}?stateCode=${stateSearchVal}&api_key${apiKey}`;
-    let responseObj = 'null';
-    console.log(query);
-    // const options = {
-    //     mode: "cors",
-    //   headers: new Headers({
-    //     "X-Api-Key": apiKey
-        // "Accept": "application/jsonp",
-        // "Content-Type": 'application/jsonp;charset=UTF-8',
-        // "Access-Control-Allow-Origin": "*"
-      // })
-      
-      // console.log(options);
-      
+    let query = `${endpoint}?stateCode=${stateSearchVals}&limit=${limitVal -1}
+    &api_key${apiKey}`;
+    let responseObj = 'null';    
       fetch(query)
       .then((response)=> response.json())
       .then((responseJson) => {
@@ -32,7 +25,6 @@ function getParkData(stateSearchVal) {
 }
 
 function renderResults(responseJson){
-  console.log(responseJson);
 
   function createListItem(park){
     let name = park.name;
@@ -49,7 +41,7 @@ function renderResults(responseJson){
     });
 
     console.log(htmlData);
-    $(".resultslist").html(htmlData.join(''));
+    $(".results-list").html(htmlData.join(''));
     $('.searchresults').removeClass('hidden');
 }
 
