@@ -9,14 +9,23 @@
   <title>Document</title>
 </head>
 <body>
-  <header role="banner">Vacation app</header>
-  <main class="containter" role="main">
+  <header role="banner">
+    <h1>Vacation app</h1>
+  </header>
+  <main class="container" role="main">
     <form class="search-form" aria-label="search-form">
+<<<<<<< HEAD
+      <label class="form__label" for="statesearch">Search by state</label>
+      <p class="form__label__subheading">For multiple states use a comma seperated list</p>
+      <input class="form__input" type="text" id="statesearch">
+      <button class="form__submit" type="submit">Submit</button> 
+=======
       <label for="statesearch">Search by state</label>
       <input type="text" name="statesearch">
       <button type="button">Submit</button> 
+>>>>>>> 844bae26b4af2b6a5553da8dcab4c0759d580b1e
     </form>
-    <section class="searchresults">
+    <section class="searchresults hidden">
       <h2>Search Results</h2>
     </section>
 
