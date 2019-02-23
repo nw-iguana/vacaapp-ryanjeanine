@@ -2,7 +2,60 @@
   box-sizing: border-box;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  margin:0;
+  padding: 10px;
+  text-align: center;
+}
+
+html,
+body {
+  margin: 0;
+  padding:0;
+}
+
+body {
+  background-color: #795548;
+}
+
+header {
+  background-color: #3E2723;
+  color: #EFEBE9;
+}
+
 .container {
   width: 700px;
   margin: 0 auto;
+  background-color: #2E7D32;
+  color: #E8F5E9;
+
+}
+
+
+.search-form {
+  padding: 20px;
+  font-size: 24px;
+}
+
+.form__input {
+  font-size: 24px;
+  padding: 10px;
+}
+
+.form__label {
+  display: block;
+}
+
+.form__label__subheading{
+  font-size: 16px;
+  margin: 0;
+}
+
+.form__submit {
+  font-size: 24px;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
 }
